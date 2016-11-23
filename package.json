@@ -1,0 +1,8 @@
+{
+  "name": "metalsmith-copyProp",
+  "description": "A metalsmith plugin to copy or create file properties, and save under new keys.",
+  "repository": "https://github.com/MorganConrad/metalsmith-copyProp",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "copyProp.js"
+}
