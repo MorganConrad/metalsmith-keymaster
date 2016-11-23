@@ -6,9 +6,9 @@ A [Metalsmith]("http://www.metalsmith.io/") plugin to copy or create file proper
 `use(copyProp(from, to))`
 
 **from** defines the value to be copied from the file object (here named **fileData**):
-if `from` is '.', use `fileData.contents.toString()`.
-if `from` is a String, use `fileData[from]` (shallow copy).
-if `from` is a function, use `from(fileData, filePath, metalsmith)`.   
+ - if `from` is '.', use `fileData.contents.toString()`.
+ - if `from` is a String, use `fileData[from]` (shallow copy).
+ - if `from` is a function, use `from(fileData, filePath, metalsmith)`.   
 
 The value will be placed in the **to** property, _i.e._  `fileData[to] = value;`
 
