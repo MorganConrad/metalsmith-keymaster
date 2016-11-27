@@ -1,8 +1,28 @@
 {
-  "name": "metalsmith-copyProp",
+  "name": "metalsmith-keymaster",
+  "version": "0.0.3",
   "description": "A metalsmith plugin to copy or create file properties, and save under new keys.",
-  "repository": "https://github.com/MorganConrad/metalsmith-copyProp",
-  "version": "0.0.1",
+  "main": "keymaster.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MorganConrad/metalsmith-keymaster.git"
+  },
+  "keywords": [
+    "metalsmith",
+    "plugin",
+    "copy",
+    "add",
+    "file",
+    "values",
+    "framework"
+  ],
+  "author": "Morgan Conrad <flyingspaniel@gmail.com> (http://flyingspaniel.com/)",
   "license": "MIT",
-  "main": "copyProp.js"
+  "bugs": {
+    "url": "https://github.com/MorganConrad/metalsmith-keymaster/issues"
+  },
+  "homepage": "https://github.com/MorganConrad/metalsmith-keymaster#readme"
 }
