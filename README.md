@@ -3,7 +3,11 @@ A general-purpose [Metalsmith]("http://www.metalsmith.io/") plugin to copy or ad
 
 ### Usage
 
-`use(keymaster(from, to, filter))`
+Install as usual,  `npm install metalsmith-keymaster`.
+
+Javascript:  `use(keymaster(from, to, filter))`
+
+CLI: Haven't tested it yet.  You'd lose a few options since it can't support functions.
 
 **from** is required and defines the value to be added/copied to the file object (here named **fileData**):
  - if `from` is '.', use `fileData.contents.toString()`.
@@ -14,9 +18,9 @@ A general-purpose [Metalsmith]("http://www.metalsmith.io/") plugin to copy or ad
 
 **filter** is optional and filters which files will be processed
  - if missing, process all files.
- - if an array, use as the match array for [multimatch](https://www.npmjs.com/package/multimatch)
  - if a string or Regex, only process matching filePaths.
- - if a function, only process when filter(filePath, data, metalsmith) returns true.
+ - if a function, only process when filter(filePath, data, metalsmith) returns true.  
+ _e.g._ If you want to use [multimatch](https://www.npmjs.com/package/multimatch), pass something like `function(filePath) { return multimatch([filePath], ["blogs/**", ...])[0] };`
 
 
 ### Possible uses:

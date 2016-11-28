@@ -1,5 +1,5 @@
 
-module.exports = addvalue;
+module.exports = keymaster;
 
 
 /*
@@ -10,19 +10,19 @@ module.exports = addvalue;
     - You have existing .md files and template files, but the names of some fields have changed over time
        e.g., if the template now uses {{ userName }} instead of {{ name }}, but you don't want to redo all the YAML
 
-       .use(addvalue('name', 'userName')
+       .use(keymaster('name', 'userName')
 
     - You want to preserve contents before the next step processes them.
        e.g., to preserve the raw contents before markdown, add the following before use(markdown())
 
-       .use(addvalue('.', 'raw'))
+       .use(keymaster('.', 'raw'))
        // then
        .use(markdown())
 
      - You are lazy and want a quick-and-dirty plugin of your own.
         e.g., to quickly hack your own not-very-smart excerpt plugin:
 
-       .use(addvalue(function(data) {
+       .use(keymaster(function(data) {
                        return data.contents.toString().substring(0, 50);
                      },
                      'excerpt'));
@@ -42,7 +42,7 @@ module.exports = addvalue;
  * @return {function}                            the plugin
 */
 
-function addvalue(from, to, filter) {
+function keymaster(from, to, filter) {
 
    var fromfn, filterfn;
 
@@ -81,11 +81,7 @@ function addvalue(from, to, filter) {
   /* calculate file filter function */
   function computeFilterFn(filter) {
      if (filter) {
-        if (Array.isArray(filter)) {
-           var mm = require('multimatch');
-           return function(filePath) { return mm([filePath],filter); };
-        }
-        else if (typeof filter === 'string') {
+        if (typeof filter === 'string') {
            var regex = new RegExp(filter);
            return function(filePath) { return regex.test(filePath); }
         }
