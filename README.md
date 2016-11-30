@@ -3,7 +3,7 @@
 [![NPM Downloads](http://img.shields.io/npm/dm/metalsmith-keymaster.svg)](https://www.npmjs.org/package/metalsmith-keymaster)
 
 # metalsmith-keymaster
-A general-purpose [Metalsmith]("http://www.metalsmith.io/") plugin to copy or add file properties, and save under new keys
+A general-purpose [Metalsmith](http://www.metalsmith.io/) plugin to copy or add file properties, and save under new keys
 
 ### Usage
 
