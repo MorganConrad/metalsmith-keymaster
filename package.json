@@ -1,10 +1,10 @@
 {
   "name": "metalsmith-keymaster",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A metalsmith plugin to copy or create file properties, and save under new keys.",
   "main": "keymaster.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,9 @@
     "values",
     "framework"
   ],
+  "devDependencies": {
+    "tape": "^4.6"
+  },
   "author": "Morgan Conrad <flyingspaniel@gmail.com> (http://flyingspaniel.com/)",
   "license": "MIT",
   "bugs": {

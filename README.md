@@ -1,3 +1,7 @@
+[![Build Status](https://secure.travis-ci.org/MorganConrad/metalsmith-keymaster.png)](http://travis-ci.org/MorganConrad/metalsmith-keymaster)
+[![License](http://img.shields.io/badge/license-MIT-A31F34.svg)](https://github.com/MorganConrad/metalsmith-keymaster)
+[![NPM Downloads](http://img.shields.io/npm/dm/metalsmith-keymaster.svg)](https://www.npmjs.org/package/metalsmith-keymaster)
+
 # metalsmith-keymaster
 A general-purpose [Metalsmith]("http://www.metalsmith.io/") plugin to copy or add file properties, and save under new keys
 
