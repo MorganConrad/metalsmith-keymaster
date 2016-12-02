@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-keymaster",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "A metalsmith plugin to copy or create file properties, and save under new keys.",
   "main": "keymaster.js",
   "scripts": {
@@ -23,6 +23,9 @@
     "tape": "^4.6"
   },
   "author": "Morgan Conrad <flyingspaniel@gmail.com> (http://flyingspaniel.com/)",
+  "contributors": [
+     "Simon Carpinter (https://simon.carpinter.name/)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MorganConrad/metalsmith-keymaster/issues"

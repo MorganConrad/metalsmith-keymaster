@@ -81,3 +81,9 @@ test('examples similar to README', function(t) {
 
    t.end();
 });
+
+test('missing parameters', function(t) {
+   t.throws(function() { keymaster() }, /keymaster requires options/);
+   t.throws(function() { keymaster({from:"foo"}) }, /keymaster requires options/);
+   t.end();
+});
