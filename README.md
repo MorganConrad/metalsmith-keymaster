@@ -9,9 +9,9 @@ A general-purpose [Metalsmith](http://www.metalsmith.io/) plugin to copy or add 
 
 Install as usual,  `npm install metalsmith-keymaster`.
 
-Javascript:  `use(keymaster(from, to, filter))`
+Javascript:  `use(keymaster({from: from, to: to, filter: filter}))`
 
-CLI: Haven't tested it yet.  You'd lose a few options since it can't support functions.
+CLI: For the basic use case, tested and working.  You'll lose a few options since it can't support functions or regular expressions.
 
 **from** is required and defines the value to be added/copied to the file object (here named **fileData**):
  - if `from` is '.', use `fileData.contents.toString()`.
@@ -32,12 +32,12 @@ CLI: Haven't tested it yet.  You'd lose a few options since it can't support fun
 ##### You have existing markdown files and template files, but the names of some fields have changed over time and are incompatible.
 _e.g._, if the template now uses {{ userName }} instead of {{ name }}, but you don't want to redo all the YAML:
 
-`.use(keymaster('name', 'userName'))`
+`.use(keymaster({from: 'name', to: 'userName'}))`
 
 ##### You want to preserve `.contents` before the next step processes them.
 _e.g._, to preserve the raw contents before markdown changes them, add the following before `use(markdown())`:
 
-    .use(keymaster('.', 'raw'))  // save contents
+    .use(keymaster({from: '.', to: 'raw'}))  // save contents
        // then
     .use(markdown())            // before markdown changes them
 
@@ -45,10 +45,10 @@ _e.g._, to preserve the raw contents before markdown changes them, add the follo
 ##### You are lazy and want a quick-and-dirty plugin of your own.
 This plugin serves as an excellent framework for writing your own plugin.  _e.g._, to quickly hack your own not-very-smart excerpt plugin:
 
-    .use(keymaster(function(data) {
-                    return data.contents.toString().substring(0, 50);
-                  },
-                  'excerpt'))
+    .use(keymaster({from: function(data) {
+                      return data.contents.toString().substring(0, 50);
+                   },
+                   to: 'excerpt'}))
 
 
 ### Notes, Todos, and Caveats
@@ -59,8 +59,8 @@ Currently only supports a _single_ level of keys, _i.e._ `from` can be `"foo"` b
 
 To copy multiple fields, just use keymaster multiple times, _e.g._
 
-    .use(keymaster('foo', 'bar'))
-    .use(keymaster('abc', 'xyz'))
+    .use(keymaster({from: 'foo', to: 'bar'}))
+    .use(keymaster({from: 'abc', to: 'xyz'}))
 
 **Warning:** The code does not check if the property already exists, so be careful not to overwrite something you need!
 
@@ -68,9 +68,9 @@ To copy multiple fields, just use keymaster multiple times, _e.g._
 
 Instead of using [metalsmith-filenames](https://www.npmjs.com/package/metalsmith-filenames), use
 
-    .use(keymaster(function(data, filePath) {
-                     return filePath;
+    .use(keymaster({from: function(data, filePath) {
+                       return filePath;
                   },
-                  'yourKeyHere'));
+                  to: 'yourKeyHere'}));
 
    and you have the options to filter files or select the key.

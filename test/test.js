@@ -21,8 +21,8 @@ function done(err) { if (err) throw err; }
 
 test('simple copy ', function(t) {
    var files = createFiles();
-   keymaster('title', 'newtitle')(files, null, done);
-   keymaster('.', 'copyContents')(files, null, done);
+   keymaster({from: 'title', to: 'newtitle'})(files, null, done);
+   keymaster({from: '.', to: 'copyContents'})(files, null, done);
    Object.keys(files).forEach(function(filePath) {
       fileData = files[filePath];
       t.equal(fileData.title, fileData.newtitle);
@@ -37,8 +37,8 @@ test('filefilter', function(t) {
    var files = createFiles();
 
    // test Regex and string
-   keymaster('title', 'newtitle', /md$/)(files, null, done);
-   keymaster('.', 'copyContents', 'html$')(files, null, done);
+   keymaster({from: 'title', to: 'newtitle', filter: /md$/})(files, null, done);
+   keymaster({from: '.', to: 'copyContents', filter: 'html$'})(files, null, done);
 
    fileData = files['file1.md']
    t.true(fileData.newtitle);
@@ -49,9 +49,12 @@ test('filefilter', function(t) {
    t.true(fileData.copyContents);
 
    // test user provided function
-   keymaster('.', 'copyContents',
-              function(filePath) { return 'file1.md' === filePath}
-             )(files, null, done);
+   keymaster({
+      from: '.',
+      to: 'copyContents',
+      filter: function(filePath) { return 'file1.md' === filePath}
+   })(files, null, done);
+
    t.true(files['file1.md'].copyContents);
 
    t.end();
@@ -59,14 +62,19 @@ test('filefilter', function(t) {
 
 test('examples similar to README', function(t) {
    var files = createFiles();
-   keymaster(function(data) {
-                return data.contents.toString().substring(24, 35);  // slight change from readme
-             },
-             'excerpt')(files, null, done);
-   keymaster(function(data, filePath) {
-               return filePath;
-            },
-            'yourKeyHere')(files, null, done);
+   keymaster({
+      from: function(data) {
+         return data.contents.toString().substring(24, 35);  // slight change from readme
+      },
+      to: 'excerpt'
+   })(files, null, done);
+
+   keymaster({
+      from: function(data, filePath) {
+         return filePath;
+      },
+      to: 'yourKeyHere'
+   })(files, null, done);
 
    t.equal(files['file1.md'].excerpt, 'Lorem ipsum');
    t.equal(files['file2.html'].yourKeyHere, 'file2.html');

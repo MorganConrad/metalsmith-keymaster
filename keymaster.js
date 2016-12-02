@@ -42,9 +42,22 @@ module.exports = keymaster;
  * @return {function}                            the plugin
 */
 
-function keymaster(from, to, filter) {
+function isObject(arg){
+   return Object.prototype.toString.call(arg) === '[object Object]';
+}
 
-   var fromfn, filterfn;
+function keymaster(options) {
+
+   // as per https://github.com/Treri/metalsmith-replace/blob/master/lib/replace.js and similar modules
+   if (!isObject(options)) {
+      throw new Error('metalsmith-keymaster expects object options');
+   }
+
+   var from = options.from,
+       to = options.to,
+       filter = options.filter,
+       fromfn,
+       filterfn;
 
    if (typeof from === 'string') {
       fromfn = (from === '.') ?
