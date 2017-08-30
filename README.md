@@ -12,7 +12,7 @@ Install as usual,  `npm install metalsmith-keymaster`.
 
 Javascript:  `use(keymaster({from: from, to: to, filter: filter}))`
 
-CLI: For the basic use case, tested and working.  You'll lose a few options since it can't support functions or regular expressions.
+CLI: You'll lose a few options since it can't support functions or regular expressions.
 
 **from** is required and defines the value to be added/copied to the file object (here named **fileData**):
  - if `from` is '.', use `fileData.contents.toString()`.
