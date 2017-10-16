@@ -2,7 +2,7 @@
 [![License](http://img.shields.io/badge/license-MIT-A31F34.svg)](https://github.com/MorganConrad/metalsmith-keymaster)
 [![NPM Downloads](http://img.shields.io/npm/dm/metalsmith-keymaster.svg)](https://www.npmjs.org/package/metalsmith-keymaster)
 [![Known Vulnerabilities](https://snyk.io/test/github/morganconrad/metalsmith-keymaster/badge.svg)](https://snyk.io/test/github/morganconrad/metalsmith-keymaster)
-
+[![Coverage Status](https://coveralls.io/repos/github/MorganConrad/metalsmith-keymaster/badge.svg)](https://coveralls.io/github/MorganConrad/metalsmith-keymaster)
 # metalsmith-keymaster
 A general-purpose [Metalsmith](http://www.metalsmith.io/) plugin to copy or add file properties, and save under new keys
 
@@ -74,4 +74,4 @@ Instead of using [metalsmith-filenames](https://www.npmjs.com/package/metalsmith
                   },
                   to: 'yourKeyHere'}));
 
-   and you have the options to filter files or select the key.
+   and you have the options to filter files or keymaster the key.
