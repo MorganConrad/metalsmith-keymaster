@@ -47,8 +47,12 @@ test('filefilter', function(t) {
    fileData = files['file2.html']
    t.false(fileData.newtitle);
    t.true(fileData.copyContents);
+   t.end();
+});
 
-   // test user provided function
+
+test('userFnFileFilter', function(t) {
+   var files = createFiles();
    keymaster({
       from: '.',
       to: 'copyContents',
@@ -56,11 +60,10 @@ test('filefilter', function(t) {
    })(files, null, done);
 
    t.true(files['file1.md'].copyContents);
-
    t.end();
 });
 
-test('examples similar to README', function(t) {
+test('README excerpt', function(t) {
    var files = createFiles();
    keymaster({
       from: function(data) {
@@ -68,7 +71,12 @@ test('examples similar to README', function(t) {
       },
       to: 'excerpt'
    })(files, null, done);
+   t.equal(files['file1.md'].excerpt, 'Lorem ipsum');
+   t.end();
+});
 
+test('README add filename', function(t) {
+   var files = createFiles();
    keymaster({
       from: function(data, filePath) {
          return filePath;
@@ -76,9 +84,7 @@ test('examples similar to README', function(t) {
       to: 'yourKeyHere'
    })(files, null, done);
 
-   t.equal(files['file1.md'].excerpt, 'Lorem ipsum');
    t.equal(files['file2.html'].yourKeyHere, 'file2.html');
-
    t.end();
 });
 
