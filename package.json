@@ -21,10 +21,11 @@
     "framework"
   ],
   "devDependencies": {
-    "coveralls": "^3.1",
+    "coveralls": "^3.1.1",
     "nyc": "^15.1.0",
-    "tape": "^5.2"
+    "tape": "^5.3"
   },
+  "files": [],
   "author": "Morgan Conrad <flyingspaniel@gmail.com> (http://flyingspaniel.com/)",
   "contributors": [
     "Simon Carpinter (https://simon.carpinter.name/)"
